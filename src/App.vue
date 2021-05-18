@@ -10,7 +10,7 @@
         <div class="result-box">
           输入的数组是{{this.cur_arr}}
           <span v-if="balance !==- 1">
-            平衡点为{{this.cur_arr[balance]}}
+            平衡点为{{this.cur_arr[balance]}},数组下标为{{balance}}
           </span>
           <span v-else>
             当前数组没有平衡点
@@ -37,6 +37,7 @@ export default {
       let arr = this.dealArr();
       this.balance = this.balancePosition(arr);
     },
+    //对输入的数组进行简单的处理
     dealArr(){
       let arr = this.arrStr.split(',');
       arr = arr.map(item => {
@@ -45,6 +46,7 @@ export default {
       })
       return arr.filter(item => Number.isInteger(item));
     },
+    //返回平衡点下标
     balancePosition(arr){
       this.cur_arr = arr;
       if(arr.length <= 2){
